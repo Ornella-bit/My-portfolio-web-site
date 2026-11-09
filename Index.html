@@ -11,6 +11,8 @@
 </head>
 <body>
 <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="orb o4"></div>
+<div id="bar" aria-hidden="true"></div>
+<div id="cursor" aria-hidden="true"><span></span></div>
 <div id="glow" aria-hidden="true"></div>
 
 <nav class="pill glass">
@@ -35,22 +37,22 @@
   <section id="work" class="wrap">
     <h2>Selected work</h2>
     <div class="grid">
-      <a class="card glass tilt wide" style="--c:#9852A3" href="https://maintenance-predictive.streamlit.app/" target="_blank" rel="noopener">
+      <a data-cursor="Open" class="card glass tilt wide" style="--c:#9852A3" href="https://maintenance-predictive.streamlit.app/" target="_blank" rel="noopener">
         <h3>Predictive maintenance</h3>
         <p>A model that estimates how many cycles an engine has left before it fails, trained on NASA sensor data and served as a live web app.</p>
         <small>Python, scikit-learn, Streamlit</small>
       </a>
-      <a class="card glass tilt" style="--c:#3D6042" href="https://ashley.pythonanywhere.com" target="_blank" rel="noopener">
+      <a data-cursor="Open" class="card glass tilt" style="--c:#3D6042" href="https://ashley.pythonanywhere.com" target="_blank" rel="noopener">
         <h3>Mini-GMAO</h3>
         <p>Track equipment, breakdowns, interventions and spare parts, with a dashboard that shows what needs attention first.</p>
         <small>Flask, SQLite</small>
       </a>
-      <a class="card glass tilt" style="--c:#89733E" href="https://github.com/Ornella-bit/mini-gmao-mobile" target="_blank" rel="noopener">
+      <a data-cursor="Open" class="card glass tilt" style="--c:#89733E" href="https://github.com/Ornella-bit/mini-gmao-mobile" target="_blank" rel="noopener">
         <h3>Mini-GMAO mobile</h3>
         <p>The same system in your pocket: an Android app to log an intervention straight from the field.</p>
         <small>Flutter, REST API</small>
       </a>
-      <a class="card glass tilt wide" style="--c:#F0A594" href="https://youtu.be/vXL2uMT5b4c" target="_blank" rel="noopener">
+      <a data-cursor="Open" class="card glass tilt wide" style="--c:#F0A594" href="https://youtu.be/vXL2uMT5b4c" target="_blank" rel="noopener">
         <h3>Tank supervisor</h3>
         <p>A simulated tank and pump with level and temperature sensors, alarms and charts, first in Python, then running on an ESP32.</p>
         <small>Python, MicroPython, Wokwi</small>
@@ -71,7 +73,7 @@
 
   <section id="contact" class="wrap contact">
     <h2 class="huge">Let’s build it.</h2>
-    <a class="btn mag" href="mailto:mocashley.da@gmail.com">Write to me</a>
+    <a data-cursor="Write" class="btn mag" href="mailto:mocashley.da@gmail.com">Write to me</a>
     <div class="links"><a href="https://github.com/Ornella-bit" target="_blank" rel="noopener">GitHub</a></div>
   </section>
 </main>
@@ -79,5 +81,3 @@
 <script src="script.js"></script>
 </body>
 </html>
-
-

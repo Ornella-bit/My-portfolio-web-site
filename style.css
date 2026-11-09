@@ -13,10 +13,10 @@ a{color:inherit;text-decoration:none}
 .wrap{max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,48px)}
 
 /* 2. FLOATING LIGHT: blurred colour blobs drifting behind everything */
-.orb{position:fixed;border-radius:50%;filter:blur(110px);opacity:.55;z-index:-1;animation:float 22s ease-in-out infinite alternate;will-change:transform}
+.orb{position:fixed;border-radius:50%;filter:blur(110px);opacity:.55;z-index:-1;animation:float 22s ease-in-out infinite alternate;will-change:transform;translate:calc(var(--px,0)*var(--k,30)*1px) calc(var(--py,0)*var(--k,30)*1px);transition:translate .8s ease-out}
 .o1{width:46vw;height:46vw;left:-12vw;top:-10vw;background:var(--green)}
-.o2{width:40vw;height:40vw;right:-10vw;top:8vh;background:var(--purple);animation-delay:-6s}
-.o3{width:38vw;height:38vw;left:25vw;bottom:-18vw;background:var(--slate);animation-delay:-11s}
+.o2{--k:-45;width:40vw;height:40vw;right:-10vw;top:8vh;background:var(--purple);animation-delay:-6s}
+.o3{--k:60;width:38vw;height:38vw;left:25vw;bottom:-18vw;background:var(--slate);animation-delay:-11s}
 .o4{width:24vw;height:24vw;right:12vw;bottom:6vh;background:var(--olive);opacity:.4;animation-delay:-3s}
 @keyframes float{to{transform:translate(6vw,8vh) scale(1.15)}}
 #glow{position:fixed;left:0;top:0;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;pointer-events:none;z-index:0;
@@ -83,4 +83,18 @@ h2{font:800 clamp(2.4rem,6vw,5rem)/1 var(--disp);letter-spacing:-.03em;margin:0 
 .links a{border-bottom:2px solid var(--salmon);padding-bottom:2px}
 footer{padding:110px 0 40px;color:var(--mut);font-size:.95rem}
 
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}h1 span{opacity:1;transform:none}}
+/* 5. MORE EFFECTS */
+#bar{position:fixed;top:0;left:0;height:4px;width:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--salmon),var(--purple));z-index:30}
+#cursor{position:fixed;left:0;top:0;width:44px;height:44px;margin:-22px 0 0 -22px;border:1.5px solid var(--salmon);border-radius:50%;pointer-events:none;z-index:40;display:grid;place-items:center;font:800 .85rem var(--disp);color:#2a1a16;opacity:0;transition:width .3s,height .3s,margin .3s,background .3s}
+#cursor.sm{width:70px;height:70px;margin:-35px 0 0 -35px}
+#cursor.link{width:96px;height:96px;margin:-48px 0 0 -48px;background:var(--salmon)}
+@media(hover:none){#cursor{display:none}}
+.ch{display:inline-block;opacity:0;transform:translateY(100%) rotate(6deg);transition:transform .9s cubic-bezier(.2,.8,.2,1) calc(var(--k)*30ms),opacity .9s calc(var(--k)*30ms)}
+h2.in .ch{opacity:1;transform:none}
+.card.rv{opacity:0;transform:translateY(50px);filter:blur(14px);transition:opacity .9s,transform .9s,filter .9s}
+.card.rv.in{opacity:1;transform:none;filter:none}
+.marquee{transition:transform .25s ease-out}
+.pill a.active{background:rgba(255,255,255,.16)}
+.pill a.pill-cta.active{background:#fff}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}h1 span,.ch{opacity:1;transform:none}}

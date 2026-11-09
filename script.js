@@ -41,6 +41,51 @@
   }
   draw();
 
+  /* 5. SCROLL EFFECTS */
+  var bar = document.getElementById("bar"), mq = document.querySelector(".marquee");
+  var lastY = scrollY, skew = 0;
+  /* 5a. Split each heading into letters so they can rise one by one */
+  if (!reduce) document.querySelectorAll("h2").forEach(function (h) {
+    var k = 0, txt = h.textContent; h.setAttribute("aria-label", txt);
+    h.innerHTML = txt.split(" ").map(function (w) {
+      return '<span aria-hidden="true" style="display:inline-block;white-space:nowrap;overflow:hidden;padding-bottom:.12em">' +
+        w.split("").map(function (ch) { return '<span class="ch" style="--k:' + (k++) + '">' + ch + "</span>"; }).join("") + "</span>";
+    }).join(" ");
+  });
+  /* 5b. Reveal headings and cards when they enter the screen */
+  var cards = document.querySelectorAll(".card");
+  if (!reduce) cards.forEach(function (el, i) { el.classList.add("rv"); el.style.transitionDelay = (i % 3) * 120 + "ms"; });
+  var io = new IntersectionObserver(function (list) {
+    list.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      en.target.classList.add("in"); io.unobserve(en.target);
+      if (en.target.classList.contains("rv")) setTimeout(function () {   /* hand control back to the tilt effect */
+        en.target.classList.remove("rv", "in"); en.target.style.transitionDelay = "";
+      }, 1600);
+    });
+  }, { threshold: .2 });
+  document.querySelectorAll("h2, .card").forEach(function (el) { io.observe(el); });
+  /* 5c. Menu highlights the section you are reading */
+  var links = document.querySelectorAll(".pill a");
+  var so = new IntersectionObserver(function (list) {
+    list.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      links.forEach(function (a) { a.classList.toggle("active", a.getAttribute("href") === "#" + en.target.id); });
+    });
+  }, { rootMargin: "-45% 0px -45% 0px" });
+  document.querySelectorAll("#work, #about, #contact").forEach(function (s) { so.observe(s); });
+  /* 5d. Progress bar + the big words lean when you scroll fast */
+  (function tick() {
+    var max = document.documentElement.scrollHeight - innerHeight;
+    bar.style.transform = "scaleX(" + (max > 0 ? scrollY / max : 0) + ")";
+    if (!reduce) {
+      var v = scrollY - lastY; lastY = scrollY;
+      skew += (Math.max(-10, Math.min(10, v * .35)) - skew) * .15;
+      mq.style.transform = "skewX(" + -skew + "deg)";
+    }
+    requestAnimationFrame(tick);
+  })();
+
   if (!fine) return;                              /* the rest is for mouse devices */
 
   /* 2. SOFT LIGHT that follows the mouse */
@@ -51,6 +96,18 @@
     glow.style.transform = "translate(" + px + "px," + py + "px)";
     requestAnimationFrame(loop);
   })();
+
+  /* 6. CURSOR RING that grows on links and says what a click does */
+  var cur = document.getElementById("cursor"), label = cur.firstChild, qx = 0, qy = 0, rx = 0, ry = 0;
+  addEventListener("mousemove", function (e) { qx = e.clientX; qy = e.clientY; cur.style.opacity = 1;
+    if (!reduce) { var b = document.body.style; b.setProperty("--px", e.clientX / innerWidth - .5); b.setProperty("--py", e.clientY / innerHeight - .5); } });
+  (function loop2() { rx += (qx - rx) * .2; ry += (qy - ry) * .2; cur.style.transform = "translate(" + rx + "px," + ry + "px)"; requestAnimationFrame(loop2); })();
+  document.querySelectorAll("a, button").forEach(function (el) {
+    el.addEventListener("mouseenter", function () {
+      if (el.dataset.cursor) { label.textContent = el.dataset.cursor; cur.classList.add("link"); } else cur.classList.add("sm");
+    });
+    el.addEventListener("mouseleave", function () { label.textContent = ""; cur.classList.remove("link", "sm"); });
+  });
 
   if (reduce) return;
 
