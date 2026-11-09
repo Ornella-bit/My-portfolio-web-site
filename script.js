@@ -3,14 +3,15 @@
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   var fine = matchMedia("(hover:hover)").matches;
 
-  /* 1. THE DANCING LINE: a canvas redrawn ~60 times per second. */
-  var c = document.getElementById("sig"), x = c.getContext("2d");
-  var W, H, dpr = Math.min(devicePixelRatio || 1, 2), mx = -999, tx = -999, my = 0, t = 0;
-  function size() {
-    var r = c.getBoundingClientRect(); W = r.width; H = r.height;
+  /* 1. THE DANCING LINES: three waves drawn on a canvas, redrawn ~60 times per second. */
+  var c = document.getElementById("sig"), x = c.getContext("2d"), box = c.parentNode;
+  var W = 0, H = 0, dpr = Math.min(devicePixelRatio || 1, 2), mx = -999, tx = -999, my = 0, t = 0;
+  function size() {                               /* match the canvas to the space it has in the page */
+    W = box.clientWidth || 600; H = box.clientHeight || 200;
     c.width = W * dpr; c.height = H * dpr; x.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
   size(); addEventListener("resize", size);
+  if (window.ResizeObserver) new ResizeObserver(size).observe(box);
   function pos(e) {
     var r = c.getBoundingClientRect(), p = e.touches ? e.touches[0] : e;
     mx = p.clientX - r.left; my = (p.clientY - r.top) / H - .5;
@@ -18,25 +19,27 @@
   c.addEventListener("mousemove", pos);
   c.addEventListener("touchmove", pos, { passive: true });
   c.addEventListener("mouseleave", function () { mx = -999; });
+  /* height of one wave at horizontal position i. A bell curve makes it bulge around the pointer. */
+  function wave(i, ph, amp, k) {
+    var y = H / 2 + Math.sin(i * .011 + t + ph) * amp + Math.sin(i * .031 + t * 1.7 + ph) * amp * .45;
+    var d = (i - tx) / 110, b = Math.exp(-d * d);
+    return y + b * k * (-my * H * 1.1 + Math.sin(i * .12 + t * 6) * H * .12);
+  }
+  var waves = [["#89733E", 2, 2.4, .12, .5], ["#9852A3", 3, 1.2, .16, .8], ["#F0A594", 4, 0, .2, 1]];
   function draw() {
     if (!reduce) t += .02;
-    tx += (mx - tx) * .12;                       /* the bump follows the pointer smoothly */
+    tx += (mx - tx) * .12;
     x.clearRect(0, 0, W, H);
-    var g = x.createLinearGradient(0, 0, W, 0);
-    g.addColorStop(0, "#F0A594"); g.addColorStop(.5, "#9852A3"); g.addColorStop(1, "#F0A594");
-    x.lineWidth = 4; x.lineJoin = "round"; x.strokeStyle = g;
-    x.shadowColor = "rgba(152,82,163,.8)"; x.shadowBlur = 18;
-    x.beginPath();
-    var mid = H / 2, dotY = mid;
-    for (var i = 0; i <= W; i += 3) {
-      var y = mid + Math.sin(i * .011 + t) * 20 + Math.sin(i * .031 + t * 1.7) * 9;
-      var d = (i - tx) / 90, bump = Math.exp(-d * d);   /* a bell curve around the pointer */
-      y += bump * (-my * H * 1.2 + Math.sin(i * .12 + t * 6) * 28 * bump);
-      i === 0 ? x.moveTo(i, y) : x.lineTo(i, y);
-      if (Math.abs(i - tx) < 2) dotY = y;
-    }
-    x.stroke();
-    if (tx > 0) { x.shadowBlur = 24; x.shadowColor = "#F0A594"; x.fillStyle = "#F0A594"; x.beginPath(); x.arc(tx, dotY, 9, 0, 7); x.fill(); }
+    x.lineJoin = "round"; x.lineCap = "round";
+    waves.forEach(function (w) {
+      x.strokeStyle = w[0]; x.lineWidth = w[1]; x.beginPath();
+      for (var i = 0; i <= W; i += 3) {
+        var y = wave(i, w[2], H * w[3] * .5, w[4]);
+        i === 0 ? x.moveTo(i, y) : x.lineTo(i, y);
+      }
+      x.stroke();
+    });
+    if (tx > 0) { x.fillStyle = "#F0A594"; x.beginPath(); x.arc(tx, wave(tx, 0, H * .1, 1), 8, 0, 7); x.fill(); }
     requestAnimationFrame(draw);
   }
   draw();
