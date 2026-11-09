@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ashley | Tools built from real needs</title>
+<meta name="description" content="Portfolio of Ashley: automation, data and software projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Source+Serif+4:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="orb o4"></div>
+<div id="glow" aria-hidden="true"></div>
+
+<nav class="pill glass">
+  <a href="#top">Ashley</a><a href="#work">Work</a><a href="#about">About</a>
+  <a href="#contact" class="pill-cta">Contact</a>
+</nav>
+
+<main id="top">
+  <section class="hero">
+    <h1 aria-label="I turn real needs into working tools.">
+      <span style="--i:0">I</span> <span style="--i:1">turn</span> <span style="--i:2">real</span> <span style="--i:3">needs</span> <span style="--i:4">into</span> <span style="--i:5">working</span> <span style="--i:6">tools.</span>
+    </h1>
+    <p class="lede">Computer science student building automation, data and software. Every project starts with a real problem.</p>
+    <canvas id="sig" aria-hidden="true"></canvas>
+    <p class="hint">That line is alive. Move through it.</p>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="track"><span>Python</span><span>Flask</span><span>Flutter</span><span>scikit-learn</span><span>ESP32</span><span>SQLite</span><span>Python</span><span>Flask</span><span>Flutter</span><span>scikit-learn</span><span>ESP32</span><span>SQLite</span></div>
+  </div>
+
+  <section id="work" class="wrap">
+    <h2>Selected work</h2>
+    <div class="grid">
+      <a class="card glass tilt wide" style="--c:#9852A3" href="https://maintenance-predictive.streamlit.app/" target="_blank" rel="noopener">
+        <h3>Predictive maintenance</h3>
+        <p>A model that estimates how many cycles an engine has left before it fails, trained on NASA sensor data and served as a live web app.</p>
+        <small>Python, scikit-learn, Streamlit</small>
+      </a>
+      <a class="card glass tilt" style="--c:#3D6042" href="https://ashley.pythonanywhere.com" target="_blank" rel="noopener">
+        <h3>Mini-GMAO</h3>
+        <p>Track equipment, breakdowns, interventions and spare parts, with a dashboard that shows what needs attention first.</p>
+        <small>Flask, SQLite</small>
+      </a>
+      <a class="card glass tilt" style="--c:#89733E" href="https://github.com/Ornella-bit/mini-gmao-mobile" target="_blank" rel="noopener">
+        <h3>Mini-GMAO mobile</h3>
+        <p>The same system in your pocket: an Android app to log an intervention straight from the field.</p>
+        <small>Flutter, REST API</small>
+      </a>
+      <a class="card glass tilt wide" style="--c:#F0A594" href="https://youtu.be/vXL2uMT5b4c" target="_blank" rel="noopener">
+        <h3>Tank supervisor</h3>
+        <p>A simulated tank and pump with level and temperature sensors, alarms and charts, first in Python, then running on an ESP32.</p>
+        <small>Python, MicroPython, Wokwi</small>
+      </a>
+    </div>
+  </section>
+
+  <section id="about" class="wrap">
+    <div class="glass panel">
+      <h2>How I work</h2>
+      <div>
+        <p>I start from the situation, not the technology: who needs this, what do they do today, what is slow or lost. Then I build the smallest version that works, put it online, and improve it.</p>
+        <p>I study industrial computing at UCAO and I’m aiming at software, the web and digital solutions made for Africa.</p>
+        <ul class="tools"><li>Python</li><li>Flask</li><li>Flutter</li><li>pandas</li><li>scikit-learn</li><li>SQLite</li><li>Git and GitHub</li><li>Arduino and ESP32</li><li>C</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="wrap contact">
+    <h2 class="huge">Let’s build it.</h2>
+    <a class="btn mag" href="mailto:mocashley.da@gmail.com">Write to me</a>
+    <div class="links"><a href="https://github.com/Ornella-bit" target="_blank" rel="noopener">GitHub</a></div>
+  </section>
+</main>
+<footer class="wrap">© 2026 Ashley</footer>
+<script src="script.js"></script>
+</body>
+</html>
+
+
