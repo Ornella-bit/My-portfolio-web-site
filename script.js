@@ -89,6 +89,25 @@
     requestAnimationFrame(tick);
   })();
 
+  /* Light deterrent for your own images: no right-click menu, no dragging. It stops casual copying only. */
+  document.addEventListener("contextmenu", function (e) { if (e.target.closest(".me, .shot")) e.preventDefault(); });
+  document.addEventListener("dragstart", function (e) { if (e.target.tagName === "IMG") e.preventDefault(); });
+
+  /* 5e. Numbers count up when they appear */
+  var co = new IntersectionObserver(function (list) {
+    list.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      co.unobserve(en.target);
+      var el = en.target, end = parseFloat(el.dataset.count), dec = (el.dataset.count.split(".")[1] || "").length, t0 = null;
+      (function step(now) {
+        t0 = t0 || now; var p = Math.min((now - t0) / 1400, 1), e = 1 - Math.pow(1 - p, 3);
+        el.textContent = (end * e).toFixed(dec);
+        if (p < 1) requestAnimationFrame(step);
+      })(performance.now());
+    });
+  }, { threshold: .6 });
+  if (!reduce) document.querySelectorAll("[data-count]").forEach(function (el) { el.textContent = "0"; co.observe(el); });
+
   if (!fine) return;                              /* the rest is for mouse devices */
 
   /* 2. SOFT LIGHT that follows the mouse */

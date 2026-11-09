@@ -3,8 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ashley | Tools built from real needs</title>
-<meta name="description" content="Portfolio of Ashley: automation, data and software projects.">
+<title>Ashley | I turn real needs into working tools</title>
+<meta name="description" content="Computer science student who ships: machine learning, web, mobile and embedded projects, built end to end and running online.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ashley | I turn real needs into working tools">
+<meta property="og:description" content="Five projects built end to end: predictive maintenance, a web app, an Android app, an ESP32 supervisor and a data-quality tool.">
+<meta name="theme-color" content="#171c26">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23171c26'/%3E%3Cpath d='M6 34 Q18 8 32 34 T58 34' fill='none' stroke='%23F0A594' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Source+Serif+4:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -25,10 +30,11 @@
       <h1 aria-label="I turn real needs into working tools.">
         <span style="--i:0">I</span> <span style="--i:1">turn</span> <span style="--i:2">real</span> <span style="--i:3">needs</span> <span style="--i:4">into</span> <span style="--i:5">working</span> <span style="--i:6">tools.</span>
       </h1>
-      <p class="lede">Computer science student building automation, data and software. Every project starts with a real problem.</p>
+      <p class="lede">I’m a computer science student who ships. Machine learning, web apps, mobile apps and microcontrollers: every project below is built end to end, tested, and running online.</p>
+      <p class="status"><i></i>Open to internships and collaborations</p>
       <div class="actions">
         <a class="btn" href="#work">See my work</a>
-        <a class="btn ghost" href="https://github.com/Ornella-bit" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
       </div>
     </div>
     <div class="sigwrap"><canvas id="sig" aria-hidden="true"></canvas></div>
@@ -38,51 +44,95 @@
     <div class="track"><span>Python</span><span>Flask</span><span>Flutter</span><span>scikit-learn</span><span>ESP32</span><span>SQLite</span><span>Python</span><span>Flask</span><span>Flutter</span><span>scikit-learn</span><span>ESP32</span><span>SQLite</span></div>
   </div>
 
+  <section class="wrap">
+    <div class="stats">
+      <div><b data-count="5">5</b><span>projects shipped end to end</span></div>
+      <div><b data-count="3">3</b><span>platforms: web, Android and microcontroller</span></div>
+      <div><b data-count="17.8">17.8</b><span>cycles of error on NASA’s official engine test</span></div>
+    </div>
+  </section>
+
   <section id="work" class="wrap">
-    <h2>Selected work</h2>
+    <h2>Proof, not promises</h2>
+    <p class="sub">Five projects, each solving a problem you would recognize in a real workplace. Open them, click around, check the code.</p>
     <div class="grid">
-      <a class="card tilt wide" data-cursor="Open" style="--c:#9852A3;--on:#fff" href="https://maintenance-predictive.streamlit.app/" target="_blank" rel="noopener">
+      <article class="card tilt wide" style="--c:#9852A3;--on:#fff">
         <span class="kind">Data and AI</span>
-        <h3>Predictive maintenance</h3>
-        <p>A model that estimates how many cycles an engine has left before it fails, trained on NASA sensor data and served as a live web app.</p>
+        <img class="shot" src="img/predictive.jpg" alt="" draggable="false" onerror="this.remove()">
+        <h3>Know when an engine will fail, before it does</h3>
+        <p>Trained on NASA’s turbofan sensor data, this model predicts how many cycles an engine has left. Gradient Boosting beat the linear baseline on NASA’s official test set, and anyone can try it live.</p>
         <small>Python, scikit-learn, Streamlit</small>
-      </a>
-      <a class="card tilt" data-cursor="Open" style="--c:#3D6042;--on:#fff" href="https://ashley.pythonanywhere.com" target="_blank" rel="noopener">
+        <div class="card-links"><a class="mini" href="https://maintenance-predictive.streamlit.app/" target="_blank" rel="noopener">Try the live demo</a><a class="mini alt" href="https://github.com/Ornella-bit/maintenance-predictive" target="_blank" rel="noopener">Code</a></div>
+      </article>
+      <article class="card tilt" style="--c:#3D6042;--on:#fff">
         <span class="kind">Web app</span>
-        <h3>Mini-GMAO</h3>
-        <p>Track equipment, breakdowns, interventions and spare parts, with a dashboard that shows what needs attention first.</p>
+        <img class="shot" src="img/mini-gmao.jpg" alt="" draggable="false" onerror="this.remove()">
+        <h3>Every machine, breakdown and spare part in one place</h3>
+        <p>A maintenance tracker with a dashboard that shows what needs attention first. Deployed and usable today.</p>
         <small>Flask, SQLite</small>
-      </a>
-      <a class="card tilt" data-cursor="Open" style="--c:#49566E;--on:#fff" href="https://github.com/Ornella-bit/mini-gmao-mobile" target="_blank" rel="noopener">
+        <div class="card-links"><a class="mini" href="https://ashley.pythonanywhere.com" target="_blank" rel="noopener">Open the app</a><a class="mini alt" href="https://github.com/Ornella-bit/mini-gmao" target="_blank" rel="noopener">Code</a></div>
+      </article>
+      <article class="card tilt" style="--c:#49566E;--on:#fff">
         <span class="kind">Mobile app</span>
-        <h3>Mini-GMAO mobile</h3>
-        <p>The same system in your pocket: an Android app to log an intervention straight from the field.</p>
+        <img class="shot" src="img/mobile.jpg" alt="" draggable="false" onerror="this.remove()">
+        <h3>The same system, in a technician’s pocket</h3>
+        <p>An Android app connected to the live system: a technician logs an intervention on the spot, straight from the field.</p>
         <small>Flutter, REST API</small>
-      </a>
-      <a class="card tilt wide" data-cursor="Open" style="--c:#89733E;--on:#12161d" href="https://youtu.be/vXL2uMT5b4c" target="_blank" rel="noopener">
+        <div class="card-links"><a class="mini" href="https://github.com/Ornella-bit/mini-gmao-mobile/releases" target="_blank" rel="noopener">Get the APK</a><a class="mini alt" href="https://github.com/Ornella-bit/mini-gmao-mobile" target="_blank" rel="noopener">Code</a></div>
+      </article>
+      <article class="card tilt wide" style="--c:#89733E;--on:#12161d">
         <span class="kind">Embedded</span>
-        <h3>Tank supervisor</h3>
-        <p>A simulated tank and pump with level and temperature sensors, alarms and charts, first in Python, then running on an ESP32.</p>
+        <img class="shot" src="img/tank.jpg" alt="" draggable="false" onerror="this.remove()">
+        <h3>Raise the alarm before the tank overflows</h3>
+        <p>A tank and pump with level and temperature sensors. The system triggers alarms, records its data and draws charts, first as a Python simulation, then running on an ESP32 microcontroller.</p>
         <small>Python, MicroPython, Wokwi</small>
-      </a>
+        <div class="card-links"><a class="mini" href="https://youtu.be/vXL2uMT5b4c" target="_blank" rel="noopener">Watch the demo</a><a class="mini alt" href="https://github.com/Ornella-bit/superviseur-reservoir" target="_blank" rel="noopener">Code</a></div>
+      </article>
+      <article class="card tilt wide" style="--c:#F0A594;--on:#12161d">
+        <span class="kind">Data quality</span>
+        <img class="shot" src="img/baobab.jpg" alt="" draggable="false" onerror="this.remove()">
+        <h3>See how one late supplier ripples through production</h3>
+        <p>Checks a company’s data for errors, maps the production chain as a graph, simulates a supplier delay, and answers questions through an AI copilot that cites its sources. Built for the CREATE WITH AI hackathon (JNC Africa), with fictional data.</p>
+        <small>Python, Streamlit, NetworkX</small>
+        <div class="card-links"><a class="mini" href="https://baobao-seve.streamlit.app" target="_blank" rel="noopener">Try the live demo</a><a class="mini alt" href="https://youtu.be/tuzpyNcVVX0" target="_blank" rel="noopener">Watch the video</a></div>
+      </article>
+      <article class="card tilt soon" style="--c:#171c26;--on:#f3efe9">
+        <span class="kind">In progress</span>
+        <h3>Tekmoryx</h3>
+        <p>A document-analysis platform that flags anomalies in public spending, designed for Bénin. Prototype in Python and Streamlit.</p>
+        <small>Python, Streamlit</small>
+        <div class="card-links"><a class="mini alt" href="https://github.com/Ornella-bit" target="_blank" rel="noopener">Follow on GitHub</a></div>
+      </article>
     </div>
   </section>
 
   <section id="about" class="wrap">
     <div class="panel">
-      <h2>How I work</h2>
       <div>
-        <p>I start from the situation, not the technology: who needs this, what do they do today, what is slow or lost. Then I build the smallest version that works, put it online, and improve it.</p>
-        <p>I study industrial computing at UCAO and I’m aiming at software, the web and digital solutions made for Africa.</p>
+        <figure class="me"><img src="img/ashley.jpg" alt="Portrait of Ashley" draggable="false" onerror="this.parentNode.remove()"></figure>
+        <h2>Why work with me</h2>
+        <p>I don’t start with technology. I start with the person who has the problem: what they do today, what slows them down, what gets lost.</p>
+        <p>I study industrial computing at UCAO and I’m aiming at software, the web and digital solutions designed for Africa. I learn by building, and everything I learn ends up in a project you can open.</p>
+      </div>
+      <div>
+        <ol class="steps">
+          <li><span class="n">1</span><p><b>Listen.</b> I find the real need before writing a line of code.</p></li>
+          <li><span class="n">2</span><p><b>Build small.</b> The smallest version that works, in your hands fast.</p></li>
+          <li><span class="n">3</span><p><b>Ship and improve.</b> Online, tested, and better with every round of feedback.</p></li>
+        </ol>
         <ul class="tools"><li>Python</li><li>Flask</li><li>Flutter</li><li>pandas</li><li>scikit-learn</li><li>SQLite</li><li>Git and GitHub</li><li>Arduino and ESP32</li><li>C</li></ul>
       </div>
     </div>
   </section>
 
   <section id="contact" class="wrap contact">
-    <h2 class="huge">Let’s build it.</h2>
-    <a class="btn mag" data-cursor="Write" href="mailto:mocashleh.da@gmail.com">mocashleh.da@gmail.com</a>
-    <div class="links"><a href="https://github.com/Ornella-bit" target="_blank" rel="noopener">GitHub</a></div>
+    <h2 class="huge">Got a problem? Let’s solve it.</h2>
+    <p class="sub">Tell me what slows your team down. I’ll tell you how I would build the fix.</p>
+    <div class="contact-actions">
+      <a class="btn mag" data-cursor="Write" href="mailto:mocashley.da@gmail.com">mocashley.da@gmail.com</a>
+      <a class="btn ghost" href="https://github.com/Ornella-bit" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn ghost" href="mailto:mocashley.da@gmail.com?subject=CV%20request&body=Hello%20Ashley%2C%0A%0AI%20would%20like%20to%20receive%20your%20CV.%0A%0AName%20and%20organization%3A%20">Request my CV</a>
+    </div>
   </section>
 </main>
 <footer class="wrap">© 2026 Ashley</footer>
