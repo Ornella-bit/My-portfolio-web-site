@@ -9,7 +9,7 @@
   /* safety net: if lang.js did not load, these English defaults keep the page working */
   L.h1.en = L.h1.en || ["I turn real needs into", "working tools."];
   L.rot.en = L.rot.en || ["models that predict failures.", "apps technicians use in the field.", "sensors that raise the alarm.", "software made for Africa."];
-  var SEL = "nav a, .status span, .pre, .lede, .actions a, .stats span, h2, .sub, .row-title span, .kind, .detail p, .mini, .steps p, .contact-actions a, .cv-note";
+  var SEL = "nav a, .status span, .pre, .lede, .actions a, .stats span, h2, .sub, .row-title span, .kind, .detail p, .mini, .panel p, .tools li, .contact-actions a, .cv-note";
   var els = Array.prototype.slice.call(document.querySelectorAll(SEL));
   els.forEach(function (el) { el.dataset.en = el.innerHTML.trim(); });
   var h1 = document.getElementById("h1"), rot = document.getElementById("rot"), rt, ri = 0;
@@ -39,6 +39,11 @@
     els.forEach(function (el) { var en = el.dataset.en; el.innerHTML = (l === "fr" && L.fr[en]) || en; });
     renderH1(); startRot();
     if (L.title && L.title[l]) document.title = L.title[l];
+    /* small texts that are not visible words: cursor label, button labels, picture description, search-engine summary */
+    var cw = document.querySelector("[data-cursor]"); if (cw) cw.dataset.cursor = l === "fr" ? "Écrire" : "Write";
+    var xb = document.querySelector(".cv-x"); if (xb) xb.setAttribute("aria-label", l === "fr" ? "Fermer" : "Close");
+    var im = document.querySelector(".me img"); if (im) im.alt = l === "fr" ? "Portrait d’Ashley" : "Portrait of Ashley";
+    var md = document.querySelector('meta[name="description"]'); if (md && L.desc && L.desc[l]) md.setAttribute("content", L.desc[l]);
     var m = document.querySelector('a[href*="subject="]'), mm = L.mail && L.mail[l];
     if (m && mm) m.href = "mailto:mocashley.da@gmail.com?subject=" + encodeURIComponent(mm[0]) + "&body=" + encodeURIComponent(mm[1]);
     var b = document.getElementById("lang");

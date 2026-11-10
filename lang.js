@@ -2,7 +2,7 @@
 window.I18N = {
  "fr": {
   "Open to internships and collaborations": "Ouverte aux stages et aux collaborations",
-  "Computer science student. Machine learning, web, mobile and embedded projects, built end to end and running online.": "Étudiante en informatique. Projets de machine learning, de développement web et mobile et de systèmes embarqués, conçus de bout en bout.",
+  "Computer science student. Machine learning, web and mobile development and embedded projects, built end to end and running online.": "Étudiante en informatique. Projets de machine learning, de développement web et mobile et de systèmes embarqués, conçus de bout en bout.",
   "I build": "Je construis",
   "See my work": "Voir mes projets",
   "Get in touch": "Me contacter",
@@ -14,11 +14,11 @@ window.I18N = {
   "cycles of error on NASA’s official engine test": "cycles d’erreur sur le test officiel de la NASA",
   "Proof, not promises": "Des preuves, pas des promesses",
   "Five projects, each solving a problem you would recognize in a real workplace. Open them, click around, check the code.": "Cinq projets, chacun répond à un problème que l’on rencontre vraiment au travail. Ouvrez-les, testez-les, lisez le code.",
-  "Know when an engine will fail, before it does": "Savoir quand est-ce qu’un moteur va tomber en panne, avant la panne",
+  "Know when an engine will fail, before it does": "Savoir qu’un moteur va tomber en panne, avant la panne",
   "Every machine, breakdown and spare part in one place": "Chaque machine, panne et pièce détachée au même endroit",
   "The same system, in a technician’s pocket": "Le même système, dans la poche du technicien",
   "Raise the alarm before the tank overflows": "Donner l’alerte avant que le réservoir ne déborde",
-  "See how one late supplier ripples through production and supply chains": "Voir comment le retard d’un fournisseur affecte toute la production et les chaînes d’approvisionnement",
+  "See how one late supplier ripples through production": "Voir comment un fournisseur en retard se répercute sur toute la production",
   "Spotting anomalies in public spending": "Repérer les anomalies dans la dépense publique",
   "Data and AI": "Données et IA",
   "Web app": "Application web",
@@ -48,7 +48,9 @@ window.I18N = {
   "Tell me what slows your team down. I’ll tell you how I would build the fix.": "Dites-moi ce qui ralentit votre équipe. Je vous dirai comment je construirais la solution.",
   "View my CV": "Voir mon CV",
   "Request a copy": "Demander une copie",
-  "View only. Need a copy? Write to me.": "Consultation uniquement. Besoin d’une copie ? Écrivez-moi."
+  "View only. Need a copy? Write to me.": "Consultation uniquement. Besoin d’une copie ? Écrivez-moi.",
+  "Git and GitHub": "Git et GitHub",
+  "Arduino and ESP32": "Arduino et ESP32"
  },
  "h1": {
   "en": [
@@ -87,5 +89,9 @@ window.I18N = {
  "title": {
   "en": "Ashley | I turn real needs into working tools",
   "fr": "Ashley | Je transforme de vrais besoins en outils qui fonctionnent"
+ },
+ "desc": {
+  "en": "Computer science student who ships: machine learning, web, mobile and embedded projects, built end to end and running online.",
+  "fr": "Étudiante en informatique : projets de machine learning, de web, de mobile et de systèmes embarqués, conçus de bout en bout et en ligne."
  }
 };

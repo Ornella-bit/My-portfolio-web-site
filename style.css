@@ -184,3 +184,7 @@ body:has(dialog[open]){overflow:hidden}
 /* Small phones: a smaller menu that always fits */
 @media(max-width:560px){.pill{max-width:calc(100vw - 16px);padding:4px;font-size:.9rem}.pill a,.langbtn{padding:8px 11px}.pill .logo{display:none}.langbtn{margin-left:2px;padding:7px 11px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* The CV window shows the version that matches the site language */
+html[lang="fr"] .sheet-en{display:none}
+html:not([lang="fr"]) .sheet-fr{display:none}
