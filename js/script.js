@@ -4,7 +4,11 @@
   var fine = matchMedia("(hover:hover)").matches;
 
   /* 0. LANGUAGE. English lives in index.html, French in lang.js. Each text is swapped by matching the English version. */
-  var L = window.I18N || { fr: {}, h1: {}, rot: {}, mail: {}, title: {} }, lang = "en";
+  var L = window.I18N || {}, lang = "en";
+  L.fr = L.fr || {}; L.h1 = L.h1 || {}; L.rot = L.rot || {}; L.mail = L.mail || {}; L.title = L.title || {};
+  /* safety net: if lang.js did not load, these English defaults keep the page working */
+  L.h1.en = L.h1.en || ["I turn real needs into", "working tools."];
+  L.rot.en = L.rot.en || ["models that predict failures.", "apps technicians use in the field.", "sensors that raise the alarm.", "software made for Africa."];
   var SEL = "nav a, .status span, .pre, .lede, .actions a, .stats span, h2, .sub, .row-title span, .kind, .detail p, .mini, .steps p, .contact-actions a, .cv-note";
   var els = Array.prototype.slice.call(document.querySelectorAll(SEL));
   els.forEach(function (el) { el.dataset.en = el.innerHTML.trim(); });
@@ -69,7 +73,10 @@
     return y + b * k * (-my * H * 1.1 + Math.sin(i * .12 + t * 6) * H * .12);
   }
   var waves = [["#89733E", 2, 2.4, .12, .5], ["#9852A3", 3, 1.2, .16, .8], ["#F0A594", 4, 0, .2, 1]];
+  var onscreen = true, running = false;
   function draw() {
+    if (!onscreen) { running = false; return; }   /* stop drawing when the line is not visible */
+    running = true;
     if (!reduce) t += .02;
     tx += (mx - tx) * .12;
     x.clearRect(0, 0, W, H);
@@ -86,6 +93,9 @@
     requestAnimationFrame(draw);
   }
   draw();
+  if (window.IntersectionObserver) new IntersectionObserver(function (l) {
+    onscreen = l[0].isIntersecting; if (onscreen && !running) draw();
+  }).observe(box);
 
   /* 5. SCROLL EFFECTS */
   var bar = document.getElementById("bar"), mq = document.querySelector(".marquee");
