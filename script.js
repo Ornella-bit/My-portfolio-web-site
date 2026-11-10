@@ -5,7 +5,7 @@
 
   /* 0. LANGUAGE. English lives in index.html, French in lang.js. Each text is swapped by matching the English version. */
   var L = window.I18N || { fr: {}, h1: {}, rot: {}, mail: {}, title: {} }, lang = "en";
-  var SEL = "nav a, .status span, .pre, .lede, .actions a, .stats span, h2, .sub, .row-title span, .kind, .detail p, .mini, .steps p, .contact-actions a";
+  var SEL = "nav a, .status span, .pre, .lede, .actions a, .stats span, h2, .sub, .row-title span, .kind, .detail p, .mini, .steps p, .contact-actions a, .cv-note";
   var els = Array.prototype.slice.call(document.querySelectorAll(SEL));
   els.forEach(function (el) { el.dataset.en = el.innerHTML.trim(); });
   var h1 = document.getElementById("h1"), rot = document.getElementById("rot"), rt, ri = 0;
@@ -137,8 +137,15 @@
     });
   });
 
+  /* CV viewer: opens as a view-only window; click outside it or press Escape to close */
+  var dlg = document.getElementById("cv");
+  document.querySelectorAll("[data-cv]").forEach(function (b) { b.addEventListener("click", function (e) { e.preventDefault(); if (dlg.showModal) dlg.showModal(); }); });
+  dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
+  dlg.querySelector(".cv-x").addEventListener("click", function () { dlg.close(); });
+  dlg.addEventListener("keydown", function (e) { if ((e.ctrlKey || e.metaKey) && /^[ps]$/i.test(e.key)) e.preventDefault(); });
+
   /* Light deterrent for your own images: no right-click menu, no dragging. It stops casual copying only. */
-  document.addEventListener("contextmenu", function (e) { if (e.target.closest(".me, .shot")) e.preventDefault(); });
+  document.addEventListener("contextmenu", function (e) { if (e.target.closest(".me, .shot, .sheet")) e.preventDefault(); });
   document.addEventListener("dragstart", function (e) { if (e.target.tagName === "IMG") e.preventDefault(); });
 
   /* 5e. Numbers count up when they appear */

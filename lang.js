@@ -10,7 +10,7 @@ window.I18N = {
   "About": "À propos",
   "Contact": "Contact",
   "projects shipped end to end": "projets livrés de bout en bout",
-  "platforms: web, Android and microcontroller": "plateformes : web, Android et microcontrôleur",
+  "platforms: web, Android and microcontroller": "plateformes : web, Android et microcontrôleur",
   "cycles of error on NASA’s official engine test": "cycles d’erreur sur le test officiel de la NASA",
   "Proof, not promises": "Des preuves, pas des promesses",
   "Five projects, each solving a problem you would recognize in a real workplace. Open them, click around, check the code.": "Cinq projets, chacun répond à un problème que l’on rencontre vraiment au travail. Ouvrez-les, testez-les, lisez le code.",
@@ -28,7 +28,7 @@ window.I18N = {
   "In progress": "En cours",
   "Trained on NASA’s turbofan sensor data, this model predicts how many cycles an engine has left. Gradient Boosting beat the linear baseline on NASA’s official test set, and anyone can try it live.": "Entraîné sur les données de capteurs de turboréacteurs de la NASA, ce modèle prédit combien de cycles il reste à un moteur. Le Gradient Boosting a battu le modèle linéaire sur le test officiel de la NASA, et chacun peut l’essayer en ligne.",
   "A maintenance tracker with a dashboard that shows what needs attention first, including low-stock alerts. Deployed and usable today.": "Un outil de suivi de maintenance avec un tableau de bord qui montre ce qui demande de l’attention en premier, y compris les alertes de stock bas. Déployé et utilisable dès aujourd’hui.",
-  "An Android app connected to the live system: search equipment, open its record and log an intervention on the spot, straight from the field.": "Une application Android connectée au système en ligne : chercher un équipement, ouvrir sa fiche et saisir une intervention sur place, directement depuis le terrain.",
+  "An Android app connected to the live system: search equipment, open its record and log an intervention on the spot, straight from the field.": "Une application Android connectée au système en ligne : chercher un équipement, ouvrir sa fiche et saisir une intervention sur place, directement depuis le terrain.",
   "A tank and pump with level and temperature sensors. The system triggers alarms, records its data and draws charts, first as a Python simulation, then running on an ESP32 microcontroller.": "Un réservoir et une pompe avec des capteurs de niveau et de température. Le système déclenche des alarmes, enregistre ses données et trace des graphiques, d’abord en simulation Python, puis sur un microcontrôleur ESP32.",
   "Checks a company’s data for errors, maps the production chain as a graph, simulates a supplier delay, and answers questions through an AI copilot that cites its sources. Built for the CREATE WITH AI hackathon (JNC Africa), with fictional data.": "Contrôle la qualité des données d’une entreprise, représente la chaîne de production sous forme de graphe, simule un retard fournisseur et répond aux questions grâce à un copilote IA qui cite ses sources. Conçu pour le hackathon CREATE WITH AI (JNC Africa), avec des données fictives.",
   "A document-analysis platform that flags anomalies in public spending, designed for Bénin. Prototype in Python and Streamlit.": "Une plateforme d’analyse de documents qui signale les anomalies dans la dépense publique, pensée pour le Bénin. Prototype en Python et Streamlit.",
@@ -39,14 +39,16 @@ window.I18N = {
   "Watch the video": "Voir la vidéo",
   "Follow on GitHub": "Suivre sur GitHub",
   "Why work with me": "Pourquoi travailler avec moi",
-  "I don’t start with technology. I start with the person who has the problem: what they do today, what slows them down, what gets lost.": "Je ne commence pas par la technologie. Je commence par la personne qui a le problème : ce qu’elle fait aujourd’hui, ce qui la ralentit, ce qui se perd.",
+  "I don’t start with technology. I start with the person who has the problem: what they do today, what slows them down, what gets lost.": "Je ne commence pas par la technologie. Je commence par la personne qui a le problème : ce qu’elle fait aujourd’hui, ce qui la ralentit, ce qui se perd.",
   "I study industrial computing at UCAO and I’m aiming at software, the web and digital solutions designed for Africa. I learn by building, and everything I learn ends up in a project you can open.": "J’étudie l’informatique industrielle à l’UCAO et je vise le logiciel, le web et les solutions numériques pensées pour l’Afrique. J’apprends en construisant, et tout ce que j’apprends finit dans un projet que vous pouvez ouvrir.",
   "<b>Listen.</b> I find the real need before writing a line of code.": "<b>Écouter.</b> Je cerne le vrai besoin avant d’écrire une ligne de code.",
   "<b>Build small.</b> The smallest version that works, in your hands fast.": "<b>Construire petit.</b> La plus petite version qui marche, entre vos mains rapidement.",
   "<b>Ship and improve.</b> Online, tested, and better with every round of feedback.": "<b>Livrer et améliorer.</b> En ligne, testé, et meilleur à chaque retour.",
-  "Got a problem? Let’s solve it.": "Un problème ? Résolvons-le.",
+  "Got a problem? Let’s solve it.": "Un problème ? Résolvons-le.",
   "Tell me what slows your team down. I’ll tell you how I would build the fix.": "Dites-moi ce qui ralentit votre équipe. Je vous dirai comment je construirais la solution.",
-  "Request my CV": "Demander mon CV"
+  "View my CV": "Voir mon CV",
+  "Request a copy": "Demander une copie",
+  "View only. Need a copy? Write to me.": "Consultation uniquement. Besoin d’une copie ? Écrivez-moi."
  },
  "h1": {
   "en": [
@@ -79,7 +81,7 @@ window.I18N = {
   ],
   "fr": [
    "Demande de CV",
-   "Bonjour Ashley,\n\nJe souhaiterais recevoir votre CV.\n\nNom et organisation : "
+   "Bonjour Ashley,\n\nJe souhaiterais recevoir votre CV.\n\nNom et organisation : "
   ]
  },
  "title": {

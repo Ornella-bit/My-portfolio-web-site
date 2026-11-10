@@ -152,3 +152,30 @@ h2.in .ch{opacity:1;transform:none}
 .row.rv.in{opacity:1;transform:none;filter:none}
 
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}h1 .w,.ch{opacity:1;transform:none}}
+
+/* CV viewer: view only. No PDF is published; printing and the right-click menu are switched off. */
+dialog{padding:0;border:0;background:transparent;width:min(880px,96vw);max-height:92vh;overflow:auto;color:var(--fg);--cl:#F0A594;border-radius:16px;overscroll-behavior:contain}
+dialog::backdrop{background:rgba(8,12,16,.82)}
+body:has(dialog[open]){overflow:hidden}
+.cv-bar{position:sticky;top:0;z-index:3;display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--surface);border-bottom:1px solid rgba(255,255,255,.12)}
+.cv-note{flex:1;font:400 .9rem/1.4 var(--acme);color:var(--mut)}
+.cv-x{all:unset;cursor:pointer;width:36px;height:36px;display:grid;place-items:center;border-radius:50%;border:1.5px solid rgba(255,255,255,.3);font:400 1.4rem/1 var(--acme)}
+.cv-x:hover{background:var(--fg);color:var(--bg)}
+.cv-x:focus-visible{outline:3px solid var(--salmon);outline-offset:2px}
+.sheet{background:#fbf8f3;color:#222;padding:0 0 28px;font:400 .86rem/1.55 Helvetica,Arial,sans-serif;user-select:none;-webkit-user-select:none}
+.sheet>h4,.sheet>p,.sheet>ul,.sheet>.r{margin-left:28px;margin-right:28px}
+.cvh{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;padding:24px 28px 18px;background:#E2B48F;border-bottom:4px solid #1B3A5C}
+.cvh h3{margin:0;font:700 clamp(1.4rem,3.4vw,1.9rem)/1.15 Helvetica,Arial,sans-serif;color:#1F5A3D}
+.cvt{margin:6px 0 4px;font-weight:700;color:#4A2C14}
+.cvc{margin:0;font-size:.8rem}
+.cvh img{width:74px;height:92px;object-fit:cover;border-radius:8px;border:2px solid #111;flex:none}
+.sheet h4{margin-top:18px;margin-bottom:6px;padding-bottom:3px;border-bottom:1.5px solid #1B3A5C;font:700 .95rem/1.3 Helvetica,Arial,sans-serif;color:#1B3A5C}
+.sheet p{margin-top:0;margin-bottom:0;text-align:justify}
+.sheet ul{margin-top:2px;margin-bottom:0;padding-left:18px}
+.sheet li{margin-bottom:3px}
+.r{display:grid;grid-template-columns:120px 1fr;gap:12px;margin-bottom:5px}
+.d{color:#A4501F}
+.r span{color:#6B7280}
+.r ul{margin-top:4px}
+@media(max-width:560px){.r{grid-template-columns:1fr;gap:0}.cv-note{font-size:.8rem}}
+@media print{body *{display:none!important}body::before{content:"Printing is disabled on this page.";display:block;padding:40px;font:1.2rem Arial,sans-serif}}
