@@ -3,6 +3,49 @@
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   var fine = matchMedia("(hover:hover)").matches;
 
+  /* 0. LANGUAGE. English lives in index.html, French in lang.js. Each text is swapped by matching the English version. */
+  var L = window.I18N || { fr: {}, h1: {}, rot: {}, mail: {}, title: {} }, lang = "en";
+  var SEL = "nav a, .status span, .pre, .lede, .actions a, .stats span, h2, .sub, .row-title span, .kind, .detail p, .mini, .steps p, .contact-actions a";
+  var els = Array.prototype.slice.call(document.querySelectorAll(SEL));
+  els.forEach(function (el) { el.dataset.en = el.innerHTML.trim(); });
+  var h1 = document.getElementById("h1"), rot = document.getElementById("rot"), rt, ri = 0;
+  function renderH1() {                            /* the headline is rebuilt word by word so it can animate */
+    var p = L.h1[lang] || L.h1.en || [], i = 0;
+    function words(t) { return t.split(" ").map(function (w) { return '<span class="w" style="--i:' + (i++) + '">' + w + "</span>"; }).join(" "); }
+    h1.innerHTML = words(p[0]) + " <em>" + words(p[1]) + "</em>"; h1.setAttribute("aria-label", p.join(" "));
+  }
+  function startRot() {                            /* the "I build ..." line cycles through what I make */
+    clearInterval(rt); var list = (L.rot && L.rot[lang]) || []; ri = 0;
+    if (!list.length) return; rot.textContent = list[0];
+    if (reduce) return;
+    rt = setInterval(function () {
+      rot.classList.add("out");
+      setTimeout(function () { ri = (ri + 1) % list.length; rot.textContent = list[ri]; rot.classList.remove("out"); }, 380);
+    }, 3300);
+  }
+  function splitHeading(h) {                       /* letters that rise one by one */
+    var k = 0, txt = h.textContent; h.setAttribute("aria-label", txt);
+    h.innerHTML = txt.split(" ").map(function (w) {
+      return '<span aria-hidden="true" style="display:inline-block;white-space:nowrap;overflow:hidden;padding-bottom:.12em">' +
+        w.split("").map(function (ch) { return '<span class="ch" style="--k:' + (k++) + '">' + ch + "</span>"; }).join("") + "</span>";
+    }).join(" ");
+  }
+  function applyLang(l, first) {
+    lang = l; document.documentElement.lang = l;
+    els.forEach(function (el) { var en = el.dataset.en; el.innerHTML = (l === "fr" && L.fr[en]) || en; });
+    renderH1(); startRot();
+    if (L.title && L.title[l]) document.title = L.title[l];
+    var m = document.querySelector('a[href*="subject="]'), mm = L.mail && L.mail[l];
+    if (m && mm) m.href = "mailto:mocashley.da@gmail.com?subject=" + encodeURIComponent(mm[0]) + "&body=" + encodeURIComponent(mm[1]);
+    var b = document.getElementById("lang");
+    b.textContent = l === "en" ? "FR" : "EN"; b.setAttribute("aria-label", l === "en" ? "Passer en français" : "Switch to English");
+    if (!first && !reduce) document.querySelectorAll("h2").forEach(function (h) { splitHeading(h); void h.offsetWidth; h.classList.add("in"); });
+    try { localStorage.setItem("lang", l); } catch (e) {}
+  }
+  var saved = null; try { saved = localStorage.getItem("lang"); } catch (e) {}
+  applyLang(saved || (/^fr/i.test(navigator.language || "") ? "fr" : "en"), true);
+  document.getElementById("lang").addEventListener("click", function () { applyLang(lang === "en" ? "fr" : "en"); });
+
   /* 1. THE DANCING LINES: three waves drawn on a canvas, redrawn ~60 times per second. */
   var c = document.getElementById("sig"), x = c.getContext("2d"), box = c.parentNode;
   var W = 0, H = 0, dpr = Math.min(devicePixelRatio || 1, 2), mx = -999, tx = -999, my = 0, t = 0;
@@ -47,14 +90,8 @@
   /* 5. SCROLL EFFECTS */
   var bar = document.getElementById("bar"), mq = document.querySelector(".marquee");
   var lastY = scrollY, skew = 0;
-  /* 5a. Split each heading into letters so they can rise one by one */
-  if (!reduce) document.querySelectorAll("h2").forEach(function (h) {
-    var k = 0, txt = h.textContent; h.setAttribute("aria-label", txt);
-    h.innerHTML = txt.split(" ").map(function (w) {
-      return '<span aria-hidden="true" style="display:inline-block;white-space:nowrap;overflow:hidden;padding-bottom:.12em">' +
-        w.split("").map(function (ch) { return '<span class="ch" style="--k:' + (k++) + '">' + ch + "</span>"; }).join("") + "</span>";
-    }).join(" ");
-  });
+  /* 5a. Headings: letters rise one by one */
+  if (!reduce) document.querySelectorAll("h2").forEach(splitHeading);
   /* 5b. Reveal headings and cards when they enter the screen */
   var cards = document.querySelectorAll(".row");
   if (!reduce) cards.forEach(function (el, i) { el.classList.add("rv"); el.style.transitionDelay = Math.min(i, 5) * 60 + "ms"; });
@@ -121,14 +158,12 @@
 
   if (!fine) return;                              /* the rest is for mouse devices */
 
-  /* 2. SOFT LIGHT that follows the mouse */
-  var glow = document.getElementById("glow"), gx = 0, gy = 0, px = 0, py = 0;
-  addEventListener("mousemove", function (e) { gx = e.clientX; gy = e.clientY; glow.style.opacity = 1; });
-  (function loop() {
-    px += (gx - px) * .1; py += (gy - py) * .1;
-    glow.style.transform = "translate(" + px + "px," + py + "px)";
-    requestAnimationFrame(loop);
-  })();
+  /* 2. BACKGROUND: a hidden grid lights up under the cursor and the colour light shifts gently */
+  var rootEl = document.documentElement;
+  addEventListener("mousemove", function (e) {
+    rootEl.style.setProperty("--gx", e.clientX + "px"); rootEl.style.setProperty("--gy", e.clientY + "px");
+    if (!reduce) { rootEl.style.setProperty("--px", e.clientX / innerWidth - .5); rootEl.style.setProperty("--py", e.clientY / innerHeight - .5); }
+  });
 
   /* 6. CURSOR RING that grows on links and says what a click does */
   var cur = document.getElementById("cursor"), label = cur.firstChild, qx = 0, qy = 0, rx = 0, ry = 0;

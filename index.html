@@ -8,30 +8,30 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Ashley | I turn real needs into working tools">
 <meta property="og:description" content="Five projects built end to end: predictive maintenance, a web app, an Android app, an ESP32 supervisor and a data-quality tool.">
-<meta name="theme-color" content="#171c26">
+<meta name="theme-color" content="#11171e">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23171c26'/%3E%3Cpath d='M6 34 Q18 8 32 34 T58 34' fill='none' stroke='%23F0A594' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Source+Serif+4:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Acme&family=Anton&family=Arbutus&family=Arbutus+Slab&family=Berkshire+Swash&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div id="bar" aria-hidden="true"></div>
 <div id="cursor" aria-hidden="true"><span></span></div>
-<div id="glow" aria-hidden="true"></div>
+<div class="bg" aria-hidden="true"><i class="a1"></i><i class="a2"></i><i class="a3"></i><div class="grid"></div><div class="grid lit"></div><div class="grain"></div></div>
 
 <nav class="pill">
-  <a href="#top">Ashley</a><a href="#work">Work</a><a href="#about">About</a>
+  <a href="#top" class="logo">Ashley</a><a href="#work">Work</a><a href="#about">About</a>
   <a href="#contact" class="pill-cta">Contact</a>
+  <button id="lang" class="langbtn" aria-label="Passer en français">FR</button>
 </nav>
 
 <main id="top">
   <section class="hero">
-    <div class="hero-text">
-      <h1 aria-label="I turn real needs into working tools.">
-        <span style="--i:0">I</span> <span style="--i:1">turn</span> <span style="--i:2">real</span> <span style="--i:3">needs</span> <span style="--i:4">into</span> <span style="--i:5">working</span> <span style="--i:6">tools.</span>
-      </h1>
-      <p class="lede">I’m a computer science student who ships. Machine learning, web apps, mobile apps and microcontrollers: every project below is built end to end, tested, and running online.</p>
-      <p class="status"><i></i>Open to internships and collaborations</p>
+    <div class="hero-in">
+      <p class="status"><i></i><span>Open to internships and collaborations</span></p>
+      <h1 id="h1" aria-label="I turn real needs into working tools."><span class="w">I turn real needs into</span> <em><span class="w">working tools.</span></em></h1>
+      <p class="build"><span class="pre">I build</span> <span class="rot" id="rot">models that predict failures.</span></p>
+      <p class="lede">Computer science student. Machine learning, web, mobile and embedded projects, built end to end and running online.</p>
       <div class="actions">
         <a class="btn" href="#work">See my work</a>
         <a class="btn ghost" href="#contact">Get in touch</a>
@@ -56,7 +56,7 @@
     <h2>Proof, not promises</h2>
     <p class="sub">Five projects, each solving a problem you would recognize in a real workplace. Open them, click around, check the code.</p>
     <div class="rows">
-      <article class="row open" style="--c:#9852A3;--on:#fff">
+      <article class="row open" style="--c:#9852A3;--cl:#d9a3e2">
         <button class="row-head" aria-expanded="true" aria-controls="p1">
           <span class="row-title"><h3>Predictive maintenance</h3><span>Know when an engine will fail, before it does</span></span>
           <span class="kind">Data and AI</span><span class="plus" aria-hidden="true"></span>
@@ -66,7 +66,7 @@
           <img class="shot" src="img/predictive.jpg" alt="" draggable="false" onerror="this.remove()">
         </div></div></div>
       </article>
-      <article class="row" style="--c:#3D6042;--on:#fff">
+      <article class="row" style="--c:#3D6042;--cl:#8fc79a">
         <button class="row-head" aria-expanded="false" aria-controls="p2">
           <span class="row-title"><h3>Mini-GMAO</h3><span>Every machine, breakdown and spare part in one place</span></span>
           <span class="kind">Web app</span><span class="plus" aria-hidden="true"></span>
@@ -76,7 +76,7 @@
           <img class="shot" src="img/mini-gmao.jpg" alt="" draggable="false" onerror="this.remove()">
         </div></div></div>
       </article>
-      <article class="row" style="--c:#49566E;--on:#fff">
+      <article class="row" style="--c:#49566E;--cl:#a9b9da">
         <button class="row-head" aria-expanded="false" aria-controls="p3">
           <span class="row-title"><h3>Mini-GMAO Mobile</h3><span>The same system, in a technician’s pocket</span></span>
           <span class="kind">Mobile app</span><span class="plus" aria-hidden="true"></span>
@@ -86,7 +86,7 @@
           <img class="shot" src="img/mobile.jpg" alt="" draggable="false" onerror="this.remove()">
         </div></div></div>
       </article>
-      <article class="row" style="--c:#89733E;--on:#12161d">
+      <article class="row" style="--c:#89733E;--cl:#d2b66f">
         <button class="row-head" aria-expanded="false" aria-controls="p4">
           <span class="row-title"><h3>Tank supervisor</h3><span>Raise the alarm before the tank overflows</span></span>
           <span class="kind">Embedded</span><span class="plus" aria-hidden="true"></span>
@@ -96,7 +96,7 @@
           <img class="shot" src="img/tank.jpg" alt="" draggable="false" onerror="this.remove()">
         </div></div></div>
       </article>
-      <article class="row" style="--c:#F0A594;--on:#12161d">
+      <article class="row" style="--c:#F0A594;--cl:#F0A594">
         <button class="row-head" aria-expanded="false" aria-controls="p5">
           <span class="row-title"><h3>Baobab Sève</h3><span>See how one late supplier ripples through production</span></span>
           <span class="kind">Data quality</span><span class="plus" aria-hidden="true"></span>
@@ -106,7 +106,7 @@
           <img class="shot" src="img/baobab.jpg" alt="" draggable="false" onerror="this.remove()">
         </div></div></div>
       </article>
-      <article class="row soon" style="--c:#171c26;--on:#f3efe9">
+      <article class="row soon" style="--c:#F0A594;--cl:#F0A594">
         <button class="row-head" aria-expanded="false" aria-controls="p6">
           <span class="row-title"><h3>Tekmoryx</h3><span>Spotting anomalies in public spending</span></span>
           <span class="kind">In progress</span><span class="plus" aria-hidden="true"></span>
@@ -149,6 +149,7 @@
   </section>
 </main>
 <footer class="wrap">© 2026 Ashley</footer>
+<script src="lang.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
