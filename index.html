@@ -55,53 +55,66 @@
   <section id="work" class="wrap">
     <h2>Proof, not promises</h2>
     <p class="sub">Five projects, each solving a problem you would recognize in a real workplace. Open them, click around, check the code.</p>
-    <div class="grid">
-      <article class="card tilt wide" style="--c:#9852A3;--on:#fff">
-        <span class="kind">Data and AI</span>
-        <img class="shot" src="img/predictive.jpg" alt="" draggable="false" onerror="this.remove()">
-        <h3>Know when an engine will fail, before it does</h3>
-        <p>Trained on NASA’s turbofan sensor data, this model predicts how many cycles an engine has left. Gradient Boosting beat the linear baseline on NASA’s official test set, and anyone can try it live.</p>
-        <small>Python, scikit-learn, Streamlit</small>
-        <div class="card-links"><a class="mini" href="https://maintenance-predictive.streamlit.app/" target="_blank" rel="noopener">Try the live demo</a><a class="mini alt" href="https://github.com/Ornella-bit/maintenance-predictive" target="_blank" rel="noopener">Code</a></div>
+    <div class="rows">
+      <article class="row open" style="--c:#9852A3;--on:#fff">
+        <button class="row-head" aria-expanded="true" aria-controls="p1">
+          <span class="row-title"><h3>Predictive maintenance</h3><span>Know when an engine will fail, before it does</span></span>
+          <span class="kind">Data and AI</span><span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="row-body" id="p1"><div class="row-inner"><div class="detail">
+          <div><p>Trained on NASA’s turbofan sensor data, this model predicts how many cycles an engine has left. Gradient Boosting beat the linear baseline on NASA’s official test set, and anyone can try it live.</p><ul class="chips"><li>Python</li><li>scikit-learn</li><li>Streamlit</li></ul><div class="card-links"><a class="mini" href="https://maintenance-predictive.streamlit.app/" target="_blank" rel="noopener">Try the live demo</a><a class="mini alt" href="https://github.com/Ornella-bit/maintenance-predictive" target="_blank" rel="noopener">Code</a></div></div>
+          <img class="shot" src="img/predictive.jpg" alt="" draggable="false" onerror="this.remove()">
+        </div></div></div>
       </article>
-      <article class="card tilt" style="--c:#3D6042;--on:#fff">
-        <span class="kind">Web app</span>
-        <img class="shot" src="img/mini-gmao.jpg" alt="" draggable="false" onerror="this.remove()">
-        <h3>Every machine, breakdown and spare part in one place</h3>
-        <p>A maintenance tracker with a dashboard that shows what needs attention first. Deployed and usable today.</p>
-        <small>Flask, SQLite</small>
-        <div class="card-links"><a class="mini" href="https://ashley.pythonanywhere.com" target="_blank" rel="noopener">Open the app</a><a class="mini alt" href="https://github.com/Ornella-bit/mini-gmao" target="_blank" rel="noopener">Code</a></div>
+      <article class="row" style="--c:#3D6042;--on:#fff">
+        <button class="row-head" aria-expanded="false" aria-controls="p2">
+          <span class="row-title"><h3>Mini-GMAO</h3><span>Every machine, breakdown and spare part in one place</span></span>
+          <span class="kind">Web app</span><span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="row-body" id="p2"><div class="row-inner"><div class="detail">
+          <div><p>A maintenance tracker with a dashboard that shows what needs attention first, including low-stock alerts. Deployed and usable today.</p><ul class="chips"><li>Flask</li><li>SQLite</li></ul><div class="card-links"><a class="mini" href="https://ashley.pythonanywhere.com" target="_blank" rel="noopener">Open the app</a><a class="mini alt" href="https://github.com/Ornella-bit/mini-gmao" target="_blank" rel="noopener">Code</a></div></div>
+          <img class="shot" src="img/mini-gmao.jpg" alt="" draggable="false" onerror="this.remove()">
+        </div></div></div>
       </article>
-      <article class="card tilt" style="--c:#49566E;--on:#fff">
-        <span class="kind">Mobile app</span>
-        <img class="shot" src="img/mobile.jpg" alt="" draggable="false" onerror="this.remove()">
-        <h3>The same system, in a technician’s pocket</h3>
-        <p>An Android app connected to the live system: a technician logs an intervention on the spot, straight from the field.</p>
-        <small>Flutter, REST API</small>
-        <div class="card-links"><a class="mini" href="https://github.com/Ornella-bit/mini-gmao-mobile/releases" target="_blank" rel="noopener">Get the APK</a><a class="mini alt" href="https://github.com/Ornella-bit/mini-gmao-mobile" target="_blank" rel="noopener">Code</a></div>
+      <article class="row" style="--c:#49566E;--on:#fff">
+        <button class="row-head" aria-expanded="false" aria-controls="p3">
+          <span class="row-title"><h3>Mini-GMAO Mobile</h3><span>The same system, in a technician’s pocket</span></span>
+          <span class="kind">Mobile app</span><span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="row-body" id="p3"><div class="row-inner"><div class="detail">
+          <div><p>An Android app connected to the live system: search equipment, open its record and log an intervention on the spot, straight from the field.</p><ul class="chips"><li>Flutter</li><li>Dart</li><li>REST API</li></ul><div class="card-links"><a class="mini" href="https://github.com/Ornella-bit/mini-gmao-mobile/releases" target="_blank" rel="noopener">Get the APK</a><a class="mini alt" href="https://github.com/Ornella-bit/mini-gmao-mobile" target="_blank" rel="noopener">Code</a></div></div>
+          <img class="shot" src="img/mobile.jpg" alt="" draggable="false" onerror="this.remove()">
+        </div></div></div>
       </article>
-      <article class="card tilt wide" style="--c:#89733E;--on:#12161d">
-        <span class="kind">Embedded</span>
-        <img class="shot" src="img/tank.jpg" alt="" draggable="false" onerror="this.remove()">
-        <h3>Raise the alarm before the tank overflows</h3>
-        <p>A tank and pump with level and temperature sensors. The system triggers alarms, records its data and draws charts, first as a Python simulation, then running on an ESP32 microcontroller.</p>
-        <small>Python, MicroPython, Wokwi</small>
-        <div class="card-links"><a class="mini" href="https://youtu.be/vXL2uMT5b4c" target="_blank" rel="noopener">Watch the demo</a><a class="mini alt" href="https://github.com/Ornella-bit/superviseur-reservoir" target="_blank" rel="noopener">Code</a></div>
+      <article class="row" style="--c:#89733E;--on:#12161d">
+        <button class="row-head" aria-expanded="false" aria-controls="p4">
+          <span class="row-title"><h3>Tank supervisor</h3><span>Raise the alarm before the tank overflows</span></span>
+          <span class="kind">Embedded</span><span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="row-body" id="p4"><div class="row-inner"><div class="detail">
+          <div><p>A tank and pump with level and temperature sensors. The system triggers alarms, records its data and draws charts, first as a Python simulation, then running on an ESP32 microcontroller.</p><ul class="chips"><li>Python</li><li>MicroPython</li><li>ESP32</li><li>Wokwi</li></ul><div class="card-links"><a class="mini" href="https://youtu.be/vXL2uMT5b4c" target="_blank" rel="noopener">Watch the demo</a><a class="mini alt" href="https://github.com/Ornella-bit/superviseur-reservoir" target="_blank" rel="noopener">Code</a></div></div>
+          <img class="shot" src="img/tank.jpg" alt="" draggable="false" onerror="this.remove()">
+        </div></div></div>
       </article>
-      <article class="card tilt wide" style="--c:#F0A594;--on:#12161d">
-        <span class="kind">Data quality</span>
-        <img class="shot" src="img/baobab.jpg" alt="" draggable="false" onerror="this.remove()">
-        <h3>See how one late supplier ripples through production</h3>
-        <p>Checks a company’s data for errors, maps the production chain as a graph, simulates a supplier delay, and answers questions through an AI copilot that cites its sources. Built for the CREATE WITH AI hackathon (JNC Africa), with fictional data.</p>
-        <small>Python, Streamlit, NetworkX</small>
-        <div class="card-links"><a class="mini" href="https://baobao-seve.streamlit.app" target="_blank" rel="noopener">Try the live demo</a><a class="mini alt" href="https://youtu.be/tuzpyNcVVX0" target="_blank" rel="noopener">Watch the video</a></div>
+      <article class="row" style="--c:#F0A594;--on:#12161d">
+        <button class="row-head" aria-expanded="false" aria-controls="p5">
+          <span class="row-title"><h3>Baobab Sève</h3><span>See how one late supplier ripples through production</span></span>
+          <span class="kind">Data quality</span><span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="row-body" id="p5"><div class="row-inner"><div class="detail">
+          <div><p>Checks a company’s data for errors, maps the production chain as a graph, simulates a supplier delay, and answers questions through an AI copilot that cites its sources. Built for the CREATE WITH AI hackathon (JNC Africa), with fictional data.</p><ul class="chips"><li>Python</li><li>Streamlit</li><li>NetworkX</li></ul><div class="card-links"><a class="mini" href="https://baobao-seve.streamlit.app" target="_blank" rel="noopener">Try the live demo</a><a class="mini alt" href="https://youtu.be/tuzpyNcVVX0" target="_blank" rel="noopener">Watch the video</a></div></div>
+          <img class="shot" src="img/baobab.jpg" alt="" draggable="false" onerror="this.remove()">
+        </div></div></div>
       </article>
-      <article class="card tilt soon" style="--c:#171c26;--on:#f3efe9">
-        <span class="kind">In progress</span>
-        <h3>Tekmoryx</h3>
-        <p>A document-analysis platform that flags anomalies in public spending, designed for Bénin. Prototype in Python and Streamlit.</p>
-        <small>Python, Streamlit</small>
-        <div class="card-links"><a class="mini alt" href="https://github.com/Ornella-bit" target="_blank" rel="noopener">Follow on GitHub</a></div>
+      <article class="row soon" style="--c:#171c26;--on:#f3efe9">
+        <button class="row-head" aria-expanded="false" aria-controls="p6">
+          <span class="row-title"><h3>Tekmoryx</h3><span>Spotting anomalies in public spending</span></span>
+          <span class="kind">In progress</span><span class="plus" aria-hidden="true"></span>
+        </button>
+        <div class="row-body" id="p6"><div class="row-inner"><div class="detail">
+          <div><p>A document-analysis platform that flags anomalies in public spending, designed for Bénin. Prototype in Python and Streamlit.</p><ul class="chips"><li>Python</li><li>Streamlit</li></ul><div class="card-links"><a class="mini alt" href="https://github.com/Ornella-bit" target="_blank" rel="noopener">Follow on GitHub</a></div></div>
+          
+        </div></div></div>
       </article>
     </div>
   </section>

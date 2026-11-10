@@ -56,8 +56,8 @@
     }).join(" ");
   });
   /* 5b. Reveal headings and cards when they enter the screen */
-  var cards = document.querySelectorAll(".card");
-  if (!reduce) cards.forEach(function (el, i) { el.classList.add("rv"); el.style.transitionDelay = (i % 3) * 120 + "ms"; });
+  var cards = document.querySelectorAll(".row");
+  if (!reduce) cards.forEach(function (el, i) { el.classList.add("rv"); el.style.transitionDelay = Math.min(i, 5) * 60 + "ms"; });
   var io = new IntersectionObserver(function (list) {
     list.forEach(function (en) {
       if (!en.isIntersecting) return;
@@ -67,7 +67,7 @@
       }, 1600);
     });
   }, { threshold: .2 });
-  document.querySelectorAll("h2, .card").forEach(function (el) { io.observe(el); });
+  document.querySelectorAll("h2, .row").forEach(function (el) { io.observe(el); });
   /* 5c. Menu highlights the section you are reading */
   var links = document.querySelectorAll(".pill a");
   var so = new IntersectionObserver(function (list) {
@@ -88,6 +88,17 @@
     }
     requestAnimationFrame(tick);
   })();
+
+  /* Projects: click a row to unfold it, only one open at a time */
+  document.querySelectorAll(".row-head").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var row = b.parentNode, willOpen = !row.classList.contains("open");
+      document.querySelectorAll(".row.open").forEach(function (r) {
+        r.classList.remove("open"); r.querySelector(".row-head").setAttribute("aria-expanded", "false");
+      });
+      if (willOpen) { row.classList.add("open"); b.setAttribute("aria-expanded", "true"); }
+    });
+  });
 
   /* Light deterrent for your own images: no right-click menu, no dragging. It stops casual copying only. */
   document.addEventListener("contextmenu", function (e) { if (e.target.closest(".me, .shot")) e.preventDefault(); });
@@ -134,11 +145,10 @@
   if (reduce) return;
 
   /* 3. 3D TILT + spotlight on cards */
-  document.querySelectorAll(".tilt").forEach(function (el) {
+  document.querySelectorAll(".row").forEach(function (el) {
     el.addEventListener("mousemove", function (e) {
       var r = el.getBoundingClientRect(), px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
       el.style.setProperty("--mx", px * 100 + "%"); el.style.setProperty("--my", py * 100 + "%");
-      el.style.transform = "perspective(900px) rotateX(" + (.5 - py) * 8 + "deg) rotateY(" + (px - .5) * 10 + "deg) translateY(-4px)";
     });
     el.addEventListener("mouseleave", function () { el.style.transform = ""; });
   });
