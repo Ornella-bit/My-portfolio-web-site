@@ -18,7 +18,7 @@ window.I18N = {
   "Every machine, breakdown and spare part in one place": "Chaque machine, panne et pièce détachée au même endroit",
   "The same system, in a technician’s pocket": "Le même système, dans la poche du technicien",
   "Raise the alarm before the tank overflows": "Donner l’alerte avant que le réservoir ne déborde",
-  "See how one late supplier ripples through production": "Voir comment un fournisseur en retard se répercute sur toute la production",
+  "See how one late supplier ripples through production": "Voir comment le retard d’un fournisseur affecte toute la production",
   "Spotting anomalies in public spending": "Repérer les anomalies dans la dépense publique",
   "Data and AI": "Données et IA",
   "Web app": "Application web",
